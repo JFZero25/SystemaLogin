@@ -8,9 +8,9 @@ import java.io.File;
  * Gestiona el archivo login.txt.
  */
 public class DatosLogin {
-    private final String archivo = "login.txt";
     private final String ruta = "/home/jf/IdeaProjects/SistemaLogin/src/main/java/Modelo";
     private final ArrayList<String> credenciales = new ArrayList<>();
+    private final ArrayList<Usuario> usuarios=new ArrayList<>();
 
     public DatosLogin() throws IOException {
         crearArchivoSiNoExiste();
@@ -54,6 +54,10 @@ public class DatosLogin {
             System.out.println("Error");
         }
         return credenciales;
+    }
+
+    public ArrayList<Usuario> getUsuario(){
+        return usuarios;
     }
     // TODO: Leer línea por línea y agregar solo las válidas al ArrayList.
 }

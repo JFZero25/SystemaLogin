@@ -34,8 +34,8 @@ public class DatosSesion {
      * @param tarea Texto de la tarea.
      * @return true si se guardó correctamente, false si ocurrió un error.
      */
-    public void escribirTarea(String tarea) {
-        String linea=tarea+";";
+    public void escribirTarea(String tarea, String prior) {
+        String linea=tarea+";"+prior+";";
         try(FileWriter writer =new FileWriter(ruta,true)){
             writer.write(linea);
         } catch (IOException e) {

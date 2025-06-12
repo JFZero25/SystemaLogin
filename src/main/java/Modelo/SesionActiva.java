@@ -5,22 +5,24 @@ import Modelo.GestorUsuarios;
 import Modelo.Usuario;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 /**
  * Representa la sesión de un usuario logueado.
  */
 public class SesionActiva {
     private final Usuario usuario;
-    private final Tarea tasks;
+    private final ArrayList<Tarea> tasks= new ArrayList<>() ;
     private final Scanner scanner = new Scanner(System.in);
     private final DatosSesion datosSesion;
     private final GestorUsuarios gestorUsuarios;
     private final DatosLogin datosLogin;
+    private final LocalDate creacion=LocalDate.now();
+    private final String formato=creacion.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
-    public SesionActiva(Tarea tasks, Usuario usuario) throws IOException {
-        this.tasks = tasks;
+    public SesionActiva(Usuario usuario) throws IOException {
         this.datosSesion = new DatosSesion(usuario.getNombre());
         this.gestorUsuarios=new GestorUsuarios();
         this.datosLogin=new DatosLogin();
@@ -74,6 +76,8 @@ public class SesionActiva {
             case 1:
                 escribirTarea();
             case 2:
+                mostrarTarea();
+            case 3:
                 break;
             default:
                 System.out.println("Error de input");
@@ -92,11 +96,26 @@ public class SesionActiva {
                     System.out.println("Error de input");
         }}
 
+    private void mostrarTarea(){
+        if (tasks.isEmpty()){
+            System.out.println("No hay tareas registradas");
+            return;
+        }
+        tasks.sort(t1,t2)-> Integer.compare(t1.getPriority(),t2.getPriority);
+        for (Tarea t:tasks){
+            System.out.println("- "+t.getDescripcion()+" ("+t.getPriority()+ ")");
+        }
+    }
+
     private void escribirTarea() {
-                String tarea= scanner.nextLine();
-                tasks.setDescripcion(tarea);
-                datosSesion.escribirTarea(tarea);
-                datosSesion.mostrarTareas();
+        System.out.println("Escriba su tarea");
+        String tarea= scanner.nextLine();
+        System.out.println("Diga si la prioridad de la tarea es alta,media o baja");
+        String prior=scanner.nextLine();
+        Tarea nueva=new Tarea(tarea,prior);
+        tasks.add(nueva);
+        datosSesion.escribirTarea(tarea,prior);
+        datosSesion.mostrarTareas();
         // TODO: Pedir tarea al usuario y delegar a datosSesion.
     }
 
@@ -105,7 +124,9 @@ public class SesionActiva {
                 String user=scanner.nextLine();
                 System.out.println("Proporcione contraseña");
                 String clave=scanner.nextLine();
-                gestorUsuarios.registrar(user,clave);
+                System.out.println("Proporcione su correo");
+                String correo=scanner.nextLine();
+                gestorUsuarios.registrar(user,clave,correo,formato);
                 usuario.setClave(clave);
         // TODO: Usar GestorUsuarios para registrar un nuevo usuario.
     }

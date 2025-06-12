@@ -1,11 +1,14 @@
 package Modelo;
 
+import java.util.ArrayList;
+
 /**
  * Clase que representa a un usuario del sistema.
  */
 public class Usuario {
     private String nombre;
     private String clave;
+    private Perfil perfil;
 
     /**
      * Constructor que inicializa los atributos del usuario.
@@ -16,6 +19,7 @@ public class Usuario {
     public Usuario(String nombre, String clave) {
         this.nombre=nombre;
         this.clave=clave;
+        this.perfil= new Perfil(nombre);
         // TODO: Inicializar atributos nombre y clave
     }
 
@@ -29,5 +33,10 @@ public class Usuario {
 
     public void setClave(String clave) {
         this.clave = clave;
+    }
+
+    public ArrayList<String> getPerfil(){
+        ArrayList<String> info= perfil.getPerfil();
+        return (info);
     }
 }

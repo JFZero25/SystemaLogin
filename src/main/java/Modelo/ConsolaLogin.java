@@ -42,6 +42,10 @@ public class ConsolaLogin {
 
     }
 
+    private void verPerfil(){
+        System.out.println("d");
+    }
+
     /**
      * Solicita usuario y contraseña y maneja la autenticación.
      */

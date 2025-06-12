@@ -35,11 +35,11 @@ public class GestorUsuarios {
         return (false);
     }
 
-    public boolean registrar(String user, String clave) {
+    public boolean registrar(String user, String clave, String correo, String fecha) {
         if (usuarioExiste(user)){
             return(false);
         } else{
-        String linea=user+";"+clave+";";
+        String linea=user+";"+clave+";"+correo+";"+fecha+";";
         try(FileWriter writer =new FileWriter(ruta,true)){
             writer.write(linea);
             System.out.println("Usuario registrado");

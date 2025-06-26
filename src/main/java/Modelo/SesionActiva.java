@@ -71,12 +71,15 @@ public class SesionActiva {
         switch(opcion) {
             case 1:
                 escribirTarea();
+                break;
             case 2:
                 mostrarTarea();
+                break;
             case 3:
                 break;
             default:
                 System.out.println("Error de input");
+                break;
     }}
 
     private void ejecutarAdmin() {

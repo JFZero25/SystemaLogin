@@ -20,7 +20,7 @@ public class Login {
         String intento=usuario+";"+clave+";";
         DatosLogin datos=new DatosLogin();
         for (String linea : datos.getCredenciales()) {
-            if (linea.equals(intento)) {
+            if (linea.startsWith(intento)) {
                 return true;
             }
         }

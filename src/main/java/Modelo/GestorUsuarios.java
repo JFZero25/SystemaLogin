@@ -22,7 +22,7 @@ public class GestorUsuarios {
     }
 
     public boolean usuarioExiste(String user){
-        try(BufferedReader br =new BufferedReader(new FileReader(archivo))){
+        try(BufferedReader br =new BufferedReader(new FileReader(ruta+File.separator+archivo))){
             String linea;
             while ((linea=br.readLine())!=null){
                 if (linea.startsWith(user+";")){

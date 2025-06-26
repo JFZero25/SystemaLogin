@@ -45,7 +45,9 @@ public class Loginview extends JFrame {
     private void autentificarUsuario() throws IOException {
         String usuario = usuarioField.getText();
         String clave = new String(claveField.getPassword());
-
+        if (usuario.isEmpty() || clave.isEmpty()){
+            JOptionPane.showMessageDialog(this,"Debe ingresar usuario y contraseña","Error",JOptionPane.ERROR_MESSAGE);
+        }
         boolean valido = Login.autenticar(usuario, clave);
         if (valido) {
             Usuario user = new Usuario(usuario, clave); // puedes completar esto si lo necesitas

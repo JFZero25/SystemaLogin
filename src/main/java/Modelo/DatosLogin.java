@@ -10,7 +10,6 @@ import java.io.File;
 public class DatosLogin {
     private final String ruta = "/home/jf/IdeaProjects/SistemaLogin/src/main/java/Modelo";
     private final ArrayList<String> credenciales = new ArrayList<>();
-    private final ArrayList<Usuario> usuarios=new ArrayList<>();
 
     public DatosLogin() throws IOException {
         crearArchivoSiNoExiste();
@@ -42,7 +41,7 @@ public class DatosLogin {
      * Carga los pares usuario;clave desde el archivo a la lista.
      */
     private ArrayList<String> cargarUsuarios() {
-        try (BufferedReader br = new BufferedReader(new FileReader(ruta))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(ruta+File.separator+"login.txt"))) {
             String linea;
             while ((linea = br.readLine()) != null) {
                 linea = linea.trim();
@@ -54,10 +53,6 @@ public class DatosLogin {
             System.out.println("Error");
         }
         return credenciales;
-    }
-
-    public ArrayList<Usuario> getUsuario(){
-        return usuarios;
     }
     // TODO: Leer línea por línea y agregar solo las válidas al ArrayList.
 }

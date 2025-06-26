@@ -1,9 +1,5 @@
 package Modelo;
 
-import Modelo.DatosSesion;
-import Modelo.GestorUsuarios;
-import Modelo.Usuario;
-
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -101,9 +97,14 @@ public class SesionActiva {
             System.out.println("No hay tareas registradas");
             return;
         }
-        tasks.sort(t1,t2)-> Integer.compare(t1.getPriority(),t2.getPriority);
         for (Tarea t:tasks){
-            System.out.println("- "+t.getDescripcion()+" ("+t.getPriority()+ ")");
+            String prioridad=switch (t.getPriority()){
+                case 1->"Alta";
+                case 2->"Media";
+                case 3->"Baja";
+                default -> "Desconocida";
+            };
+            System.out.println("- "+t.getDescripcion()+"(Prioridad: "+t.getPriority()+")");
         }
     }
 

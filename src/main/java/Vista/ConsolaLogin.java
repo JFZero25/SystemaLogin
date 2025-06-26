@@ -1,7 +1,6 @@
-package Modelo;
+package Vista;
 
-import Modelo.Login;
-import Modelo.SesionActiva;
+import Controlador.Login;
 import Modelo.DatosLogin;
 
 import java.io.IOException;

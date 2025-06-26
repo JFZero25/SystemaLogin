@@ -7,10 +7,8 @@ public class Perfil {
     private String correo;
     private String date;
 
-    public Perfil(String user,String correo, String date){
+    public Perfil(String user){
         this.user=user;
-        this.correo=correo;
-        this.date=date;
     }
 
     public void setCorreo(String correo) {

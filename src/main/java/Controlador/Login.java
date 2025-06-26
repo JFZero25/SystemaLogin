@@ -1,4 +1,4 @@
-package Modelo;
+package Controlador;
 
 import Modelo.DatosLogin;
 
@@ -16,7 +16,7 @@ public class Login {
      * @param clave contraseña ingresada
      * @return true si son válidas, false si no
      */
-    static boolean autenticar(String usuario, String clave) throws IOException {
+    public static boolean autenticar(String usuario, String clave) throws IOException {
         String intento=usuario+";"+clave+";";
         DatosLogin datos=new DatosLogin();
         for (String linea : datos.getCredenciales()) {

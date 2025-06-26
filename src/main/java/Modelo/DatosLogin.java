@@ -8,7 +8,6 @@ import java.io.File;
  * Gestiona el archivo login.txt.
  */
 public class DatosLogin {
-    private final String ruta = "/home/jf/IdeaProjects/SistemaLogin/src/main/java/Modelo";
     private final ArrayList<String> credenciales = new ArrayList<>();
 
     public DatosLogin() throws IOException {
@@ -27,7 +26,7 @@ public class DatosLogin {
      * Crea el archivo login.txt si no existe.
      */
     private void crearArchivoSiNoExiste() throws IOException {
-        File archivo = new File(ruta + File.separator + "login.txt");
+        File archivo = new File( "login.txt");
         if (archivo.exists() && archivo.isFile()) {
             System.out.println("Archivo verificado");
         } else {
@@ -41,7 +40,7 @@ public class DatosLogin {
      * Carga los pares usuario;clave desde el archivo a la lista.
      */
     private ArrayList<String> cargarUsuarios() {
-        try (BufferedReader br = new BufferedReader(new FileReader(ruta+File.separator+"login.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("login.txt"))) {
             String linea;
             while ((linea = br.readLine()) != null) {
                 linea = linea.trim();

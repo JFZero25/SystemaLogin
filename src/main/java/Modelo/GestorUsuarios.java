@@ -7,10 +7,9 @@ import java.io.*;
  */
 public class GestorUsuarios {
     private final String archivo = "login.txt";
-    private final String ruta="/home/jf/IdeaProjects/SistemaLogin/src/main/java/Modelo";
 
     public GestorUsuarios() throws IOException {
-        File archivo = new File(ruta + File.separator + "login.txt");
+        File archivo = new File("login.txt");
         if (archivo.exists() && archivo.isFile()) {
             System.out.println("Archivo verificado");
         } else {
@@ -22,7 +21,7 @@ public class GestorUsuarios {
     }
 
     public boolean usuarioExiste(String user){
-        try(BufferedReader br =new BufferedReader(new FileReader(ruta+File.separator+archivo))){
+        try(BufferedReader br =new BufferedReader(new FileReader(archivo))){
             String linea;
             while ((linea=br.readLine())!=null){
                 if (linea.startsWith(user+";")){
@@ -40,7 +39,7 @@ public class GestorUsuarios {
             return(false);
         } else{
         String linea=user+";"+clave+";"+correo+";"+fecha+";";
-        try(FileWriter writer =new FileWriter(ruta,true)){
+        try(FileWriter writer =new FileWriter(archivo)){
             writer.write(linea);
             System.out.println("Usuario registrado");
             return (true);
